@@ -13,6 +13,7 @@ namespace LamNhatDuy_Lab456.Migrations
         }
         
         public override void Down()
+
         {
         }
     }
