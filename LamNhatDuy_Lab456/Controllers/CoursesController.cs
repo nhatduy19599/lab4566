@@ -26,7 +26,7 @@ namespace LamNhatDuy_Lab456.Controllers
             var viewModel = new CourseViewModels
             {
                 Categories = _dbContext.Categories.ToList()
-            }; 
+            };
             return View(viewModel);
         }
         [Authorize]

@@ -13,7 +13,7 @@ namespace LamNhatDuy_Lab456.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202006110903513_AddNameColumnToApplicationUser"; }
+            get { return "202006180651160_AddNameColumnToApplicationUser"; }
         }
         
         string IMigrationMetadata.Source
