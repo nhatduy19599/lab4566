@@ -7,8 +7,7 @@
 <h2>Mine</h2>
 <ul class="course">
     @foreach (var course in Model)
-    {
-        <li>
+    {    <li>
             <div class="date">
                 <div class="month">
                     @course.DateTime.ToString("MM")
@@ -21,6 +20,13 @@
                 <span class="lecturer">
                     @course.Lecturer.Name
                 </span>
+                <span class="category">
+                    @course.Category.Name
+                </span>
+            </div>
+            <div class="action">
+                <a href="">Edit</a>
+                <a href="">Delete</a>
             </div>
         </li>
     }
