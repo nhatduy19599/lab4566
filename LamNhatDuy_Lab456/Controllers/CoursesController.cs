@@ -23,7 +23,7 @@ namespace LamNhatDuy_Lab456.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            var viewModel = new CourseViewModels
+            var viewModel = new CoursesViewModel
             {
                 Categories = _dbContext.Categories.ToList()
             };
@@ -32,7 +32,7 @@ namespace LamNhatDuy_Lab456.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CourseViewModels viewModel)
+        public ActionResult Create(CoursesViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -50,6 +50,23 @@ namespace LamNhatDuy_Lab456.Controllers
             _dbContext.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var UserId = User.Identity.GetUserId();
+            var courses = _dbContext.Attendances
+                .Where(a => a.AttendeeId == UserId)
+                .Select(a => a.Course)
+                .Include(l => l.Lecturer)
+                .Include(l => l.Category)
+                .ToList();
+            var viewModel = new CoursesViewModel
+            {
+                UpCommingCourses = courses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
         }
     }
 }

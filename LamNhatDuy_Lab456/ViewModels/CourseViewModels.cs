@@ -7,8 +7,10 @@ using System.Web;
 
 namespace LamNhatDuy_Lab456.ViewModels
 {
-    public class CourseViewModels
+    public class CoursesViewModel
     {
+        public IEnumerable<Course> UpCommingCourses { get; set; }
+        public bool ShowAction { get; set; }
         [Required]
         public string Place { get; set; }
         [Required]
